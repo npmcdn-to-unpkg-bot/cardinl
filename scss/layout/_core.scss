@@ -1,0 +1,97 @@
+
+/*base adjustments to complement reset*/
+html {
+  box-sizing: border-box;
+  position: relative;
+  background-color: #CCC;
+}
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+h2{
+  font-size: $h3-font-size;
+}
+body {
+  color: $text-color;
+  font-size: $base-font-size;
+  font-family: $base-font-family;
+  font-weight: $base-font-weight;
+  line-height: $base-line-height;
+  height:100%;
+  bottom:0;
+  margin: 0 0 $footer-height;
+}
+img{
+  max-width:100%;
+  height:auto;
+  width:auto\9;
+}
+
+footer {
+    height: $footer-height;
+    width: 100%;
+}
+
+ul, li{
+  list-style: none;
+  padding:0;
+}
+a:link {
+    text-decoration: none;
+    color: #000;
+}
+a:visited {
+    text-decoration: none;
+    color: #000;
+}
+a:hover   {
+  text-decoration: none;
+    color: #F00;
+}
+a:active  {
+  text-decoration: none;
+    color: #000;
+}
+.right{
+  float:right;
+}
+.left{
+  float: left;
+}
+ .hidden {
+     visibility:hidden;
+ }
+ .remove{
+     display:none;
+ }
+ .show {
+  display:block;
+ }
+
+
+
+/*fix sizes for masonry*/
+@media (min-width: 35.5em){
+     .card{
+       max-width:49.9%;
+     }
+}
+@media (min-width: 48em){
+     .card{
+       max-width:33.28%;
+     }
+}
+
+@media (min-width: 84em){
+    .card{
+      max-width:20.8%;
+  }
+}
+.pure-u-1{
+  width:99.9%;
+}
+
+.js #masonry {visibility:hidden;}
+
+
+

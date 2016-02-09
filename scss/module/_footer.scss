@@ -1,16 +1,19 @@
-.side-footer{
-	display:none;
-	@media (min-width: 70em){
-	display:block;
-	}
-}
+
 .bottom-footer{
-	display:block;
-	position: absolute;
-	bottom:0;
-	left:0;
-	margin-top: 1rem;
-	@media (min-width: 70em){
-	display:none;
+	margin-top: 6rem;
+	text-align: right;
+	padding-right: .75rem;
+	ul li{
+		display:inline;
+		list-style:none;
+		text-align: center;
+		padding-left: 1.5rem;
 	}
 }
+
+@media (min-width: 84em){
+	.bottom-footer{
+	padding-right: 1rem;
+    }
+}
+

@@ -1,0 +1,83 @@
+#header{
+	padding: 0rem 0rem 0rem 1rem;
+	float:left;
+	height:$header-height;
+}
+.title{
+	display:block;
+	padding: 0;
+	font-size: $h4-font-size;
+
+}
+@media (min-width: 35.5em){
+	.title{
+		font-size: $h3-font-size;
+    }
+}
+@media (min-width: 42em){
+	.title{
+        font-size: $h3-font-size +.1;
+    }
+}
+@media (min-width: 72em){
+	.title{
+		font-size: $h2-font-size;
+    }
+}
+@media (min-width: 85em){
+	.title{
+		font-size: $h1-font-size;
+    }
+}
+.subtitle{
+	display:none;
+	font-size: $base-font-size;
+	padding: 0rem 0rem .75rem .5rem;
+}
+@media (min-width: 25em){
+	.subtitle{
+      display:block;
+    }
+}
+@media (min-width: 52em){
+	.subtitle{
+     font-size: $base-font-size + .15;
+     display:block;
+    }
+}
+@media (min-width: 70em){
+	.subtitle{
+		font-size: $base-font-size + .35;
+		display:block;
+    }
+}
+@media (min-width: 84em){
+	.subtitle{
+		font-size: $base-font-size + .75rem;
+		display:block;
+    }
+}
+
+
+@-moz-keyframes headerLoad { from { opacity:0; } to { opacity:1; } }
+@-webkit-keyframes headerLoad { from { opacity:0; } to { opacity:1; } }
+@keyframes headerLoad { from { opacity:0; } to { opacity:1; } }
+.header-load{
+  opacity:0;
+  -webkit-animation:headerLoad linear 1;
+  -moz-animation:headerLoad linear 1;
+  animation:headerLoad linear 1;
+
+-webkit-animation-fill-mode:forwards;
+  -moz-animation-fill-mode:forwards;
+  animation-fill-mode:forwards;
+
+-webkit-animation-duration:.15s;
+  -moz-animation-duration:.15s;
+  animation-duration:.15s;
+
+  -webkit-animation-delay: .15s;
+  -moz-animation-delay: .15s;
+  animation-delay: .15s;
+
+}
