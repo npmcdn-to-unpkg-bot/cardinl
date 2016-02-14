@@ -1,43 +1,77 @@
 <script>
-(function () {
+;(function ($, window, document, undefined) {
     "use strict";
-$(window).load(function () {
-        var grid = document.querySelector('#masonry');
-        var msnry;
-        imagesLoaded(grid, function () {
-            if (Modernizr.csstransitions) {
-                msnry = new Masonry(grid, {
-                    itemSelector: '.item',
-                    columnWidth: 1,
-                    percentPosition: true,
-                    transitionDuration: 0
-                });
-            } else {
-                msnry = new Masonry(grid, {
-                    itemSelector: '.item',
-                    columnWidth: 1,
-                    percentPosition: true,
-                    transitionDuration: '.2s'
-                });
-            }
-        });
-    });
-}());
-</script>
- <script>
-        var window_top = $(window);
-        function navbar_stick() {
-            if (window_top.scrollTop() >  176) {
+
+    var Mason = {
+        grid: document.querySelector('#masonry'),
+        msnry: undefined,
+        init: function(){
+            imagesLoaded(Mason.grid, function () {
+                if (Modernizr.csstransitions) {
+                    Mason.msnry = new Masonry(Mason.grid, {
+                        itemSelector: '.item',
+                        columnWidth: 1, /*columns are sized with Pure grids*/
+                        percentPosition: true,
+                        transitionDuration: 0
+                    });
+                } else {
+                    Mason.msnry = new Masonry(Mason.grid, {
+                        itemSelector: '.item',
+                        columnWidth: 1,
+                        percentPosition: true,
+                        transitionDuration: '.2s'
+                    });
+                }
+            });
+        }
+    };
+
+    var ScrollMenu = {
+        $window: $(window),
+        $navbar: $('#navbar'),
+        $nav_top: $('#navbar').offset().top,
+        $place: $('#place-holder'),
+        setOffset: function () {/*updates offset for navbar:
+                                     fix for menu 'jumping' when header shrinks or grows on resize &
+                                     permits menu to 'stick-on-scroll' from varying or changing starting points
+                                     (i.e., this function allows the header above the menu to be resized easily)*/
+              if (ScrollMenu.$navbar.offset().top >=  ScrollMenu.$place.offset().top){
+                ScrollMenu.$nav_top = $('#navbar').offset().top;
+              }
+        },
+        navbarStick: function () {
+            ScrollMenu.setOffset();
+            if (ScrollMenu.$window.scrollTop() >= ScrollMenu.$nav_top) {
                 $('#navbar').addClass('scroll-stick');
                 $('#place-holder').removeClass('remove');
             } else {
                 $('#navbar').removeClass('scroll-stick');
                 $('#place-holder').addClass('remove');
             }
+        },
+        throttle: function (funct, limit) {
+                    var wait = false;
+                    return function() {
+                        if(!wait) {
+                            wait = true;
+                            funct.apply(this, arguments);
+                            setTimeout(function() {
+                                wait = false;
+                            }, limit);
+                        }
+                    };
         }
-        $(window).load(function () {
-           $(window).scroll(navbar_stick);
-           navbar_stick();
-           $('.item').addClass('container-load');
-        });
+    };
+
+    $(window).on("load", function (e) {
+        Mason.init();
+        ScrollMenu.navbarStick();
+    });
+
+    $(window).on("resize scroll", ScrollMenu.throttle(function (e) {
+        ScrollMenu.navbarStick();
+    }, 10));
+
+})( window.jQuery, window, document);
 </script>
+

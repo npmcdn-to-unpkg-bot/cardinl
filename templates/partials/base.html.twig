@@ -10,6 +10,7 @@
     <link rel="icon" type="image/png" href="{{ url('theme://images/favicon.png', true) }}" />
     <link rel="canonical" href="{{ page.url(true, true) }}" />
     {% block stylesheets %}
+        {% do assets.addCss('https://fonts.googleapis.com/css?family=Lora:700,400italic', 104) %}
         {% do assets.addCss('theme://css/grids-custom-min.css', 104) %}
         {% do assets.addCss('theme://css-compiled/main.css',105) %}
         {% if browser.getBrowser == 'msie' and browser.getVersion >= 8 and browser.getVersion <= 9 %}
@@ -22,7 +23,6 @@
     {% do assets.addJs('https://npmcdn.com/masonry-layout@4.0/dist/masonry.pkgd.min.js',108) %}
     {% do assets.addJs('https://npmcdn.com/imagesloaded@4.1/imagesloaded.pkgd.min.js',108) %}
     {% do assets.addJs('theme://js/modernizr-custom.js',110) %}
-    {% do assets.addJs('theme://js/card.js',99) %}
     {% endblock %}
     {{ assets.js()}}
 {% endblock head%}
